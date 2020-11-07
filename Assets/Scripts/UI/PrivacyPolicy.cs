@@ -8,6 +8,10 @@ public class PrivacyPolicy : MonoBehaviour
     public string privacyPolicyLink;
     public string privacyPolicyAcceptedKey = "privacy_policy_accepted";
 
+    [Space(16)]
+
+    public Menu menu;
+
     CanvasGroup cg;
     
     void Awake()
@@ -18,11 +22,13 @@ public class PrivacyPolicy : MonoBehaviour
         {
             cg.alpha = 0;
             cg.interactable = cg.blocksRaycasts = false;
+
+            menu.In();
         }
         else
         {
             cg.alpha = 1;
-            cg.interactable = cg.blocksRaycasts = true;
+            cg.interactable = cg.blocksRaycasts = true; 
         }
 
         StartCoroutine(WaitForRebuild());
@@ -35,15 +41,13 @@ public class PrivacyPolicy : MonoBehaviour
 
     public void OnAccept()
     {
-        PlayerPrefs.SetInt(privacyPolicyAcceptedKey, 1);     
+        PlayerPrefs.SetInt(privacyPolicyAcceptedKey, 1);
+        cg.interactable = cg.blocksRaycasts = false;
 
         LeanTween.value(gameObject, v => { cg.alpha = v; }, 1, 0, 0.33f)
             .setEaseInOutCubic()
             .setIgnoreTimeScale(true)
-            .setOnComplete(() => {
-                cg.interactable = cg.blocksRaycasts = false;
-                Game.Instance.SignInGPGS();
-            });
+            .setOnComplete(() => { menu.In(); });
     }
 
     IEnumerator WaitForRebuild()
