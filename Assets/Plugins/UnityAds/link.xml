@@ -1,0 +1,15 @@
+<linker>
+    <assembly fullname="UnityEngine.Advertisements.iOS" ignoreIfMissing="1">
+        <type fullname="UnityEngine.Advertisements.Purchasing" preserve="all"/>
+    </assembly>
+    <assembly fullname="UnityEngine.Advertisements.Android" ignoreIfMissing="1">
+        <type fullname="UnityEngine.Advertisements.Purchasing" preserve="all"/>
+    </assembly>
+    <assembly fullname="Unity.Analytics.StandardEvents" ignoreIfMissing="1">
+        <!-- Keep methods used by AdSDK Analytics when adding extras to Standard Events -->
+        <type fullname="UnityEngine.Analytics.AnalyticsEvent" preserve="nothing">
+            <method name="Register"/>
+            <method name="Unregister"/>
+        </type>
+    </assembly>
+</linker>
