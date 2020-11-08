@@ -8,7 +8,7 @@ public class PrivacyPolicy : MonoBehaviour
     public string privacyPolicyLink;
     public string privacyPolicyAcceptedKey = "privacy_policy_accepted";
 
-    [Space(16)]
+    [Space(12)]
 
     public Menu menu;
 

@@ -42,16 +42,13 @@ public class TransitionPanelAnimation : MonoBehaviour
                 {
                     GameManager.ins.RestartGame();
                 }
-
                 if (baseScene != transitionScene)
                 {
                     ScenesManager.ins.HideScene(baseScene);
                     ScenesManager.ins.UnhideScene(transitionScene);
                 }
-
                 if (GameManager.ins.paused)
                 {
-                    ScenesManager.ins.pauseScreen.Play("Idle");
                     GameManager.ins.UnpauseGame();
                 }
 

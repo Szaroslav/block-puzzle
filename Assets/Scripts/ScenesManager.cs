@@ -15,19 +15,19 @@ public class ScenesManager : MonoBehaviour
     public Transform gameTransform;
     public CanvasGroup gameCanvasGroup;
     public CanvasGroup gameOverCanvasGroup;
-    public Animator pauseScreen;
 
     [HideInInspector]
     public bool transition = false;
-
+    
     private Scene currentScene = Scene.Menu;
+    private PauseScreen pauseScreen;
 
     public void LoadMenu()
     {
         if (!transition && Input.touches.Length < 2 && !MonetizationManager.ins.waitingForAd)
         {
             transitionPanel.gameObject.SetActive(true);
-            transitionPanel.SetAnimation(false, 0.3f, currentScene, Scene.Menu);
+            transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Menu);
 
             currentScene = Scene.Menu;
 
@@ -40,7 +40,7 @@ public class ScenesManager : MonoBehaviour
         if (!transition && !MonetizationManager.ins.waitingForAd)
         {
             transitionPanel.gameObject.SetActive(true);
-            transitionPanel.SetAnimation(false, 0.3f, currentScene, Scene.Settings);
+            transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Settings);
 
             currentScene = Scene.Settings;
         }
@@ -51,7 +51,7 @@ public class ScenesManager : MonoBehaviour
         if (!transition && !MonetizationManager.ins.waitingForAd)
         {
             transitionPanel.gameObject.SetActive(true);
-            transitionPanel.SetAnimation(false, 0.3f, currentScene, Scene.Game);
+            transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Game);
 
             currentScene = Scene.Game;
         }
@@ -62,7 +62,7 @@ public class ScenesManager : MonoBehaviour
         if (!transition && Input.touches.Length < 2 && !MonetizationManager.ins.waitingForAd)
         {
             transitionPanel.gameObject.SetActive(true);
-            transitionPanel.SetAnimation(true, 0.3f, currentScene, Scene.Game);
+            transitionPanel.SetAnimation(true, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Game);
 
             currentScene = Scene.Game;
         }
@@ -156,7 +156,7 @@ public class ScenesManager : MonoBehaviour
     {
         if (!GameManager.ins.gameOver)
         {
-            pauseScreen.Play("In");
+            pauseScreen.In();
             InputManager.ins.ResetBlock();
         }
     }
@@ -165,11 +165,12 @@ public class ScenesManager : MonoBehaviour
     {
         if (h)
         {
-            pauseScreen.Play("Out");
+            pauseScreen.Out();
             GameManager.ins.UnpauseGame();
         }
         else
         {
+            pauseScreen.Out(true);
             Time.timeScale = 1.0f;
         }    
     }
@@ -178,5 +179,7 @@ public class ScenesManager : MonoBehaviour
     {
         if (!ins)
             ins = this;
+
+        pauseScreen = FindObjectOfType<PauseScreen>();
     }
 }
