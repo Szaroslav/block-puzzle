@@ -24,7 +24,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadMenu()
     {
-        if (!transition && Input.touches.Length < 2 && !MonetizationManager.ins.waitingForAd)
+        if (!transition && Input.touches.Length < 2)
         {
             transitionPanel.gameObject.SetActive(true);
             transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Menu);
@@ -37,7 +37,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        if (!transition && !MonetizationManager.ins.waitingForAd)
+        if (!transition)
         {
             transitionPanel.gameObject.SetActive(true);
             transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Settings);
@@ -48,7 +48,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadGame()
     {
-        if (!transition && !MonetizationManager.ins.waitingForAd)
+        if (!transition)
         {
             transitionPanel.gameObject.SetActive(true);
             transitionPanel.SetAnimation(false, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Game);
@@ -59,7 +59,7 @@ public class ScenesManager : MonoBehaviour
 
     public void RestartGame()
     {
-        if (!transition && Input.touches.Length < 2 && !MonetizationManager.ins.waitingForAd)
+        if (!transition && Input.touches.Length < 2)
         {
             transitionPanel.gameObject.SetActive(true);
             transitionPanel.SetAnimation(true, Constants.SCENE_TRANSITION_DUR, currentScene, Scene.Game);

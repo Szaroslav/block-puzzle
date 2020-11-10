@@ -53,7 +53,7 @@ public class PauseScreen : MonoBehaviour
             .setIgnoreTimeScale(true)
             .setOnComplete(() => {
                 SetCanvasGroup(false);
-                GameManager.ins.PauseGame();
+                GameManager.ins.UnpauseGame();
             });
     }
 

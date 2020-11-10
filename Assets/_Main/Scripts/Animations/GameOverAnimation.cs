@@ -21,7 +21,7 @@ public class GameOverAnimation : MonoBehaviour
         }
         else
         {
-            if (!MonetizationManager.CheckNetworkConnection())
+            if (!MonetizationManager.ins.IsContinueAdLoaded())
             {
                 if (GameManager.ins.continueGame)
                     GameManager.ins.offlineLabel.gameObject.SetActive(true);
@@ -42,6 +42,11 @@ public class GameOverAnimation : MonoBehaviour
                 GameManager.ins.continueButton.colors = c;
             }
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     private void Update()

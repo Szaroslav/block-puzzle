@@ -4146,9 +4146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479b0d3b1624a541bb52619a1841e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMode: 0
-  placementId: rewardedVideo
-  waitingForAd: 0
+  testMode: 1
 --- !u!4 &800143098
 Transform:
   m_ObjectHideFlags: 0
@@ -6633,7 +6631,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 800143097}
-        m_MethodName: ShowAd
+        m_MethodName: ShowContinueAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
