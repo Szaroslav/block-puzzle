@@ -60,30 +60,48 @@ public class ProgressManager : MonoBehaviour
     {
         SetAudioMutes(AudioManager.ins.GetAudioMutes());
         SetAudioVolumes(AudioManager.ins.GetAudioVolumes());
-
-        SetBool("firstBeatenScore", GameManager.ins.firstBeatenScore);
-        SetBool("continueGame", GameManager.ins.continueGame);
-        PlayerPrefs.SetInt("score", GameManager.ins.score);
         SetBestScore(GameManager.ins.bestScore);
 
-        for (int y = 0; y < BoardManager.BOARD_SIZE; y++)
+        // // // // // // // // //      SAVE BOARD PROGRESS (IS NOT GAME OVER)      // // // // // // // // //
+        if (!GameManager.ins.gameOver)
         {
-            for (int x = 0; x < BoardManager.BOARD_SIZE; x++)
+            SetBool("firstBeatenScore", GameManager.ins.firstBeatenScore);
+            SetBool("continueGame", GameManager.ins.continueGame);
+            PlayerPrefs.SetInt("score", GameManager.ins.score);
+
+            for (int y = 0; y < BoardManager.BOARD_SIZE; y++)
             {
-                if (BoardManager.ins.boardBlocks[x, y])
+                for (int x = 0; x < BoardManager.BOARD_SIZE; x++)
                 {
-                    Color color = BoardManager.ins.boardBlocks[x, y].defaultColor;
-                    SetColor(GetBlockKey(x, y), color);
-                }
-                else
-                {
-                    SetColor(GetBlockKey(x, y), Color.black);
+                    if (BoardManager.ins.boardBlocks[x, y])
+                    {
+                        Color color = BoardManager.ins.boardBlocks[x, y].defaultColor;
+                        SetColor(GetBlockKey(x, y), color);
+                    }
+                    else
+                    {
+                        SetColor(GetBlockKey(x, y), Color.black);
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < BoardManager.BLOCKS_AMOUNT; i++)
-            PlayerPrefs.SetInt(i + "block", BoardManager.ins.blocks[i].prefabIndex);
+            for (int i = 0; i < BoardManager.BLOCKS_AMOUNT; i++)
+                PlayerPrefs.SetInt(i + "block", BoardManager.ins.blocks[i].prefabIndex);
+        }
+        // // // // // // // // //      DO NOT SAVE BOARD PROGRESS (IS GAME OVER)      // // // // // // // // //
+        else
+        {
+            SetBool("firstBeatenScore", true);
+            SetBool("continueGame", true);
+            PlayerPrefs.SetInt("score", 0);
+
+            for (int y = 0; y < BoardManager.BOARD_SIZE; y++)
+                for (int x = 0; x < BoardManager.BOARD_SIZE; x++)
+                        SetColor(GetBlockKey(x, y), Color.black);
+
+            for (int i = 0; i < BoardManager.BLOCKS_AMOUNT; i++)
+                PlayerPrefs.SetInt(i + "block", BoardManager.Rand(0, BoardManager.BLOCK_PREFABS_AMOUNT));
+        }
     }
 
     public static bool[] GetAudioMutes()
