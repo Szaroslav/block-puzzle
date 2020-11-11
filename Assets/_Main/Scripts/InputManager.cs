@@ -57,6 +57,9 @@ public class InputManager : MonoBehaviour
 
                         draggedBlock.Scale(true, 0.2f);
 
+                        Color cl = draggedBlock.defaultColor; cl.a = 0.66f;
+                        draggedBlock.ChangeColor(cl);
+
                         Vector3 p = draggedBlock.transform.position;
                         startPos = Camera.main.ScreenToWorldPoint(t.position);
                         startPos = new Vector3(startPos.x - p.x, startPos.y - p.y, 0);
@@ -122,6 +125,7 @@ public class InputManager : MonoBehaviour
                     lastPosition = BlockPosition(origin, size);
                     
                     draggedBlock.Move(0.08f, lastPosition);
+                    draggedBlock.ChangeColor(draggedBlock.defaultColor);
                     draggedBlock.GetComponent<BoxCollider>().enabled = false;
                     draggedBlock.enabled = false;
 
@@ -208,6 +212,7 @@ public class InputManager : MonoBehaviour
     {
         draggedBlock.Scale(false, 0.2f);
         draggedBlock.Move(0.25f, draggedBlock.basePosition);
+        draggedBlock.ChangeColor(draggedBlock.defaultColor);
     }
 
     private void ResetDraggedBlock()
