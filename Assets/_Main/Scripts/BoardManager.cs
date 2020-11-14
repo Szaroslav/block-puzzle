@@ -249,7 +249,7 @@ public class BoardManager : MonoBehaviour
 
             for (int y = 0; y < BOARD_SIZE; y++)
                 if (boardBlocks[x, y])
-                    boardBlocks[x, y].Fade(0.2f, db.GetColor());
+                    boardBlocks[x, y].Fade(0.2f, db.defaultColor);
         }
         else
         {
