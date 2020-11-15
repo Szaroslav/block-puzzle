@@ -4220,7 +4220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479b0d3b1624a541bb52619a1841e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMode: 1
+  testMode: 0
 --- !u!4 &800143098
 Transform:
   m_ObjectHideFlags: 0
@@ -5484,10 +5484,10 @@ RectTransform:
   m_Father: {fileID: 1213095457}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1020, y: 1440}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1210107557
 MonoBehaviour:
@@ -5509,7 +5509,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a72235b6c69f5224eb07de39d1252c4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d71258ccbd6273440b644cbce4d5af58, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7750,7 +7750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf628f5cdfbbd04fa4d8be8c3a73818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  privacyPolicyLink: https://szaredko.com
+  privacyPolicyLink: https://szaredko.com/block-puzzle/privacy-policy/
   privacyPolicyAcceptedKey: privacy_policy_accepted
   menu: {fileID: 1664957055}
 --- !u!222 &1662653776
@@ -7769,7 +7769,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662653773}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -10231,7 +10231,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: You're offline
+  m_text: You're offline or AD failed to load
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2786d6894a6de4d429369b942a0f57ea, type: 2}
   m_sharedMaterial: {fileID: 21200214007371450, guid: 2786d6894a6de4d429369b942a0f57ea,
@@ -10301,10 +10301,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1908247439}
-    characterCount: 14
+    characterCount: 35
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
     lineCount: 1
     pageCount: 1

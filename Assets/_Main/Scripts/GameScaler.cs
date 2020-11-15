@@ -12,11 +12,18 @@ public class GameScaler : MonoBehaviour
     public const float SCALED_BLOCK_SCALE = 0.6f;
     public const int SCORE_ICON_HEIGHT = 134;
 
+    public Transform background;
+
     private ScreenOrientation screenOrientation;
+
+    public static float GetAspectRatio()
+    {
+        return (float)Screen.height / Screen.width;
+    }
 
     public static float GetOrthographicSize()
     {
-        float ar = (float)Screen.height / Screen.width;
+        float ar = GetAspectRatio();
         return ar > TABLET_ASPECT_RATIO ? ar * HALF_WIDTH : ar * TABLET_HALF_WIDTH;
     }
 
@@ -100,5 +107,8 @@ public class GameScaler : MonoBehaviour
                 BoardManager.ins.blocks[i].transform.position = p;
             }
         }
+
+        Vector3 bgSize = new Vector3(2 * Camera.main.orthographicSize / GetAspectRatio(), Camera.main.orthographicSize, 1);
+        background.localScale = bgSize;
     }
 }
