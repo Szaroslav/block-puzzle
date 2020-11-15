@@ -5511,7 +5511,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d71258ccbd6273440b644cbce4d5af58, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8083,6 +8083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08b931b2b6ddf0459fe38a8a279dd2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 269583823}
 --- !u!4 &1713350924
 Transform:
   m_ObjectHideFlags: 0
